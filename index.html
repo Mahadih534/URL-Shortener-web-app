@@ -1,0 +1,266 @@
+<html>
+    
+    
+    <head>
+        
+        
+        <title>Hello, world!</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0-beta.2/united/bootstrap.min.css" crossorigin="anonymous">
+  </head>
+    
+    <style>
+        body{
+            
+            padding: 0px;
+            margin: 0px;
+        }
+    
+    
+        #jb{
+            
+           margin: 50px 0px 0px 0px;
+            
+            
+            
+        }
+        
+        
+        #cn{
+            
+             margin-top: 60px;
+            
+            
+            
+            
+        }
+    
+        .nav-link{
+            
+            
+            color: white;
+            
+        }
+        
+       .active{
+            
+          
+            
+        }
+    
+    
+    
+    </style>
+    
+    
+    
+    
+    </head>
+    
+    
+    
+    <body class="bg-dark">
+    
+   
+       
+        
+        
+        
+        
+        <div class="container" id="cn">
+        
+        
+       
+           <ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" href="#home">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#profile">Profile</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link " data-toggle="tab" href="#about">About</a>
+  </li>
+ 
+</ul>
+                
+            <div id="myTabContent" class="tab-content">
+  
+                <div class="tab-pane fade  show active" id="home">
+    
+      <div class="row justify-content-center">
+        <div class="jumbotron col-md-9  bg-success" id="jb">
+  <h1 class="display-3 text-center">URL SPLITER</h1>
+  <p class="lead text-center">Url Spliter is a amazing url cutter app</p>
+            
+            
+    
+            <hr class="my-4">
+  
+  <p class="lead">
+      
+      <div class="form group row">
+      
+          <input class="form-control form-control-lg col-sm-10 " type="text" placeholder="Enter Your Long URL" id="input">
+          
+          <input class="form-control-lg btn btn-lg  btn-primary col-sm-2" type="button" value="Short" id="btn">
+          
+    </div>
+  </p>
+</div>
+      
+       </div> 
+    
+            
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+       
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          
+      </div>
+    </div>
+  </div>
+</div>
+                
+                
+                
+    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="sUrl">
+        ...
+      </div>
+      <div class="modal-footer">
+       
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          
+      </div>
+    </div>
+  </div>
+</div>
+                
+      
+      
+  </div>
+  <div class="tab-pane fade" id="profile" style="color:white" >
+    <p>Hello this is profile Section </p>
+  </div>
+  <div class="tab-pane fade" id="about" style="color:white">
+    <p>Hello this is about Section </p>
+  </div>
+</div>
+        
+        
+        
+        
+        
+        
+        </div>
+        
+        
+        
+     
+
+
+  <script>
+      
+      document.getElementById("btn").onclick=function go(){
+          
+         
+               console.log("bbbb");
+    var longurl = document.getElementById("input").value;
+      
+      if(longurl=="")
+          {
+              $(document).ready(function(){
+                  
+      $("#exampleModal").modal('show');  
+                  
+              });
+
+              
+          }
+       
+        else{
+            
+            console.log("hhhhhhhhhhhhhhhhhh");
+            
+            var xhttp = new XMLHttpRequest();
+           
+            
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        
+        var  output=JSON.parse(this.responseText);
+        document.getElementById("sUrl").innerHTML=output.id;
+                    
+        $(document).ready(function(){
+                  
+      $("#exampleModal2").modal('show');  
+                  
+              });
+     
+    }
+  };
+
+  
+  
+  xhttp.open("POST", "https://www.googleapis.com/urlshortener/v1/url?fields=analytics%2Ccreated%2Cid%2Ckind%2ClongUrl%2Cstatus&key=AIzaSyAJ5wFGlLsA5vlgCcj6Vc2-b8YFw13rODc", true);
+  
+      xhttp.setRequestHeader('Content-type', 'application/json;charset=UTF-8');       
+            
+  xhttp.send(JSON.stringify({longUrl: longurl }));
+            
+        }  
+   
+          
+      }
+      
+    
+
+      
+     
+
+
+</script>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>        
+    
+    
+    </body>
+
+
+
+
+</html>
